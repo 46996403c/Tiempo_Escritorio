@@ -2,41 +2,46 @@
 
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutX="7.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane fx:id="panelTAB" layoutX="7.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab text="Tiempo">
+          <Tab fx:id="tiempoTAB" text="Tiempo">
                <content>
                   <SplitPane dividerPositions="0.2833333333333333" prefHeight="160.0" prefWidth="200.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <MenuButton layoutX="28.0" layoutY="109.0" mnemonicParsing="false" text="Dia de la semana">
+                              <MenuButton fx:id="ciudadMB" layoutX="17.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Ciudad">
                                 <items>
-                                  <CheckMenuItem mnemonicParsing="false" text="Lunes" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Martes" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Miercoles" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Jueves" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Viernes" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Sabado" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Domingo" />
+                                  <CheckMenuItem fx:id="barcelonaCMI" mnemonicParsing="false" text="Barcelona" />
+                                  <CheckMenuItem fx:id="madridCMI" mnemonicParsing="false" text="Madrid" />
+                                  <CheckMenuItem fx:id="zaragozaCMI" mnemonicParsing="false" text="Zaragoza" />
+                                </items>
+                              </MenuButton>
+                              <TextField fx:id="ciudadTF" layoutX="17.0" layoutY="57.0" prefHeight="25.0" prefWidth="147.0" promptText="Ciudad" />
+                              <MenuButton fx:id="semanaMB" layoutX="28.0" layoutY="109.0" mnemonicParsing="false" text="Dia de la semana">
+                                <items>
+                                  <CheckMenuItem fx:id="lunesCMI" mnemonicParsing="false" text="Lunes" />
+                                  <CheckMenuItem fx:id="martesCMI" mnemonicParsing="false" text="Martes" />
+                                  <CheckMenuItem fx:id="miercolesCMI" mnemonicParsing="false" text="Miercoles" />
+                                  <CheckMenuItem fx:id="juevesCMI" mnemonicParsing="false" text="Jueves" />
+                                  <CheckMenuItem fx:id="viernesCMI" mnemonicParsing="false" text="Viernes" />
+                                  <CheckMenuItem fx:id="sabadoCMI" mnemonicParsing="false" text="Sabado" />
+                                  <CheckMenuItem fx:id="domingoCMI" mnemonicParsing="false" text="Domingo" />
                                 </items>
                               </MenuButton>
                               <Label layoutX="14.0" layoutY="150.0" text="Dia:" />
-                              <TextField editable="false" layoutX="53.0" layoutY="146.0" prefHeight="25.0" prefWidth="98.0" promptText="Selccionado" />
-                              <DatePicker fx:id="calendario" layoutX="15.0" layoutY="258.0" prefHeight="25.0" prefWidth="148.0" promptText="DD/MM/AAAA" showWeekNumbers="true" />
+                              <TextField fx:id="semanaTF" editable="false" layoutX="53.0" layoutY="146.0" prefHeight="25.0" prefWidth="98.0" promptText="Selccionado" />
                               <TextField editable="false" layoutX="24.0" layoutY="213.0" prefHeight="25.0" prefWidth="131.0" promptText="Selecciona una fecha:" text="Selecciona una fecha" />
-                              <MenuButton layoutX="35.0" layoutY="23.0" mnemonicParsing="false" text="Ciudad">
-                                <items>
-                                  <CheckMenuItem mnemonicParsing="false" text="Barcelona" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Madrid" />
-                                  <CheckMenuItem mnemonicParsing="false" text="Zaragoza" />
-                                </items>
-                              </MenuButton>
-                              <TextField layoutX="15.0" layoutY="57.0" promptText="Ciudad" />
+                              <DatePicker fx:id="calendarioDP" layoutX="15.0" layoutY="258.0" prefHeight="25.0" prefWidth="148.0" promptText="DD/MM/AAAA" showWeekNumbers="true" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -48,9 +53,9 @@
                   </SplitPane>
                </content>
             </Tab>
-          <Tab text="Grafica">
+          <Tab fx:id="graficaTAB" text="Grafica">
                <content>
-                  <AreaChart>
+                  <AreaChart fx:id="graficaAC">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -60,7 +65,7 @@
                   </AreaChart>
                </content>
             </Tab>
-            <Tab disable="true" text="Informacion" />
+            <Tab fx:id="informacionTAB" disable="true" text="Informacion" />
         </tabs>
       </TabPane>
    </children>
