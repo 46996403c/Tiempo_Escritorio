@@ -2,7 +2,12 @@
 
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
@@ -16,32 +21,42 @@
                            <children>
                               <MenuButton fx:id="ciudadMB" layoutX="17.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Ciudad">
                                 <items>
-                                  <CheckMenuItem fx:id="barcelonaCMI" mnemonicParsing="false" text="Barcelona" />
-                                  <CheckMenuItem fx:id="madridCMI" mnemonicParsing="false" text="Madrid" />
-                                  <CheckMenuItem fx:id="zaragozaCMI" mnemonicParsing="false" text="Zaragoza" />
+                                  <CheckMenuItem fx:id="barcelonaCMI" mnemonicParsing="false" onAction="#ciudad" text="Barcelona" />
+                                  <CheckMenuItem fx:id="madridCMI" mnemonicParsing="false" onAction="#ciudad" text="Madrid" />
+                                  <CheckMenuItem fx:id="zaragozaCMI" mnemonicParsing="false" onAction="#ciudad" text="Zaragoza" />
                                 </items>
                               </MenuButton>
                               <TextField fx:id="ciudadTF" layoutX="17.0" layoutY="57.0" prefHeight="25.0" prefWidth="147.0" promptText="Ciudad" />
-                              <MenuButton fx:id="semanaMB" layoutX="28.0" layoutY="109.0" mnemonicParsing="false" text="Dia de la semana">
+                              <MenuButton fx:id="semanaMB" disable="true" layoutX="30.0" layoutY="144.0" mnemonicParsing="false" text="Ver tiempo para:">
                                 <items>
-                                  <CheckMenuItem fx:id="lunesCMI" mnemonicParsing="false" text="Lunes" />
-                                  <CheckMenuItem fx:id="martesCMI" mnemonicParsing="false" text="Martes" />
-                                  <CheckMenuItem fx:id="miercolesCMI" mnemonicParsing="false" text="Miercoles" />
-                                  <CheckMenuItem fx:id="juevesCMI" mnemonicParsing="false" text="Jueves" />
-                                  <CheckMenuItem fx:id="viernesCMI" mnemonicParsing="false" text="Viernes" />
-                                  <CheckMenuItem fx:id="sabadoCMI" mnemonicParsing="false" text="Sabado" />
-                                  <CheckMenuItem fx:id="domingoCMI" mnemonicParsing="false" text="Domingo" />
+                                  <CheckMenuItem fx:id="dia_1_CMI" mnemonicParsing="false" onAction="#diaSemana" text="1 Dia" />
+                                  <CheckMenuItem fx:id="dia_2_CMI" mnemonicParsing="false" onAction="#diaSemana" text="2 Dias" />
+                                  <CheckMenuItem fx:id="dia_3_CMI" mnemonicParsing="false" onAction="#diaSemana" text="3 Dias" />
+                                  <CheckMenuItem fx:id="dia_4_CMI" mnemonicParsing="false" onAction="#diaSemana" text="4 Dias" />
+                                  <CheckMenuItem fx:id="dia_5_CMI" mnemonicParsing="false" onAction="#diaSemana" text="5 Dias" />
+                                  <CheckMenuItem fx:id="dia_6_CMI" mnemonicParsing="false" onAction="#diaSemana" text="6 Dias" />
+                                  <CheckMenuItem fx:id="dia_7_CMI" mnemonicParsing="false" onAction="#diaSemana" text="7 Dias" />
+                                  <CheckMenuItem fx:id="dia_8_CMI" mnemonicParsing="false" onAction="#diaSemana" text="8 Dias" />
+                                  <CheckMenuItem fx:id="dia_9_CMI" mnemonicParsing="false" onAction="#diaSemana" text="9 Dias" />
+                                  <CheckMenuItem fx:id="dia_10_CMI" mnemonicParsing="false" onAction="#diaSemana" text="10 Dias" />
+                                  <CheckMenuItem fx:id="dia_11_CMI" mnemonicParsing="false" onAction="#diaSemana" text="11 Dias" />
+                                  <CheckMenuItem fx:id="dia_12_CMI" mnemonicParsing="false" onAction="#diaSemana" text="12 Dias" />
+                                  <CheckMenuItem fx:id="dia_13_CMI" mnemonicParsing="false" onAction="#diaSemana" text="13 Dias" />
+                                  <CheckMenuItem fx:id="dia_14_CMI" mnemonicParsing="false" onAction="#diaSemana" text="14 Dias" />
+                                  <CheckMenuItem fx:id="dia_15_CMI" mnemonicParsing="false" onAction="#diaSemana" text="15 Dias" />
                                 </items>
                               </MenuButton>
-                              <Label layoutX="14.0" layoutY="150.0" text="Dia:" />
-                              <TextField fx:id="semanaTF" editable="false" layoutX="53.0" layoutY="146.0" prefHeight="25.0" prefWidth="98.0" promptText="Selccionado" />
-                              <TextField editable="false" layoutX="24.0" layoutY="213.0" prefHeight="25.0" prefWidth="131.0" promptText="Selecciona una fecha:" text="Selecciona una fecha" />
-                              <DatePicker fx:id="calendarioDP" layoutX="15.0" layoutY="258.0" prefHeight="25.0" prefWidth="148.0" promptText="DD/MM/AAAA" showWeekNumbers="true" />
+                              <TextField fx:id="semanaTF" disable="true" editable="false" layoutX="29.0" layoutY="181.0" onAction="#diaSemana" prefHeight="25.0" prefWidth="124.0" promptText="3 Dias (defecto)" />
+                              <Button fx:id="boton" layoutX="39.0" layoutY="338.0" mnemonicParsing="false" onAction="#verTiempo" text="Button" />
+                              <VBox layoutX="35.0" layoutY="290.0" />
+                              <Button fx:id="test" layoutX="61.0" layoutY="386.0" mnemonicParsing="false" onAction="#llamadaApi" text="test" />
+                              <RadioButton fx:id="diasRB" layoutX="60.0" layoutY="101.0" mnemonicParsing="false" onAction="#daily" text="Dias" />
+                              <RadioButton fx:id="horasRB" layoutX="60.0" layoutY="118.0" mnemonicParsing="false" onAction="#daily" text="Horas" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <ListView layoutX="59.0" layoutY="68.0" prefHeight="451.0" prefWidth="456.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ListView fx:id="tiempoLV" layoutX="59.0" layoutY="68.0" prefHeight="451.0" prefWidth="456.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </items>
