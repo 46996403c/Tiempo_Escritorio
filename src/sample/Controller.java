@@ -379,8 +379,8 @@ public class Controller {
         dia_15_CMI.setSelected(false);
     }
     public void Grafica() throws ParserConfigurationException, SAXException, IOException {
-        Stage stage = new Stage();
-        stage.setTitle("Evolucion de la temperatura: " + ciudadTF.getText());
+        Stage stageGrafica = new Stage();
+        stageGrafica.setTitle("Evolucion de la temperatura: " + ciudadTF.getText());
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -496,11 +496,11 @@ public class Controller {
         double sem3MinMedia = sem3MinTotal/7;
         MinMediaSem3.setText(""+sem3MinMedia);
         //defining a series
-        Scene scene  = new Scene(lineChart,500,400);
+        Scene sceneGrafica  = new Scene(lineChart,500,400);
         lineChart.getData().addAll(semana1Max, semana2Max, semana3Max,semana1Min, semana2Min, semana3Min);
-
-        stage.setScene(scene);
-        stage.show();
+        stageGrafica.getIcons().add(new Image("file:src\\iconos\\iconoFinal.png"));
+        stageGrafica.setScene(sceneGrafica);
+        stageGrafica.show();
     }
     public void VerTiempo() throws IOException, ParserConfigurationException, SAXException {
         graficaTAB.setDisable(false);
@@ -597,7 +597,7 @@ public class Controller {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Tiempo, cerrar programa");
         alert.setHeaderText("Seguro que quires salir?");
-        alert.setContentText("Pulsa Acptar para salir.\nPulsa Cancelar para volver al programa");
+        alert.setContentText("Pulsa Acptar para salir.\nPulsa Cancelar para volver al programa.");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             Platform.exit();
