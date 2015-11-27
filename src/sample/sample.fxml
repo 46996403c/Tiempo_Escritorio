@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -19,15 +21,16 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <MenuButton fx:id="ciudadMB" layoutX="17.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Ciudad">
+                              <MenuButton fx:id="ciudadMB" layoutX="17.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Ciudad" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0">
                                 <items>
-                                  <CheckMenuItem fx:id="barcelonaCMI" mnemonicParsing="false" onAction="#ciudad" selected="true" text="Barcelona" />
-                                  <CheckMenuItem fx:id="madridCMI" mnemonicParsing="false" onAction="#ciudad" text="Madrid" />
-                                  <CheckMenuItem fx:id="zaragozaCMI" mnemonicParsing="false" onAction="#ciudad" text="Zaragoza" />
+                                  <CheckMenuItem fx:id="barcelonaCMI" mnemonicParsing="false" onAction="#Ciudad" selected="true" text="Barcelona" />
+                                  <CheckMenuItem fx:id="madridCMI" mnemonicParsing="false" onAction="#Ciudad" text="Madrid" />
+                                  <CheckMenuItem fx:id="zaragozaCMI" mnemonicParsing="false" onAction="#Ciudad" text="Zaragoza" />
                                 </items>
                               </MenuButton>
-                              <TextField fx:id="ciudadTF" layoutX="17.0" layoutY="57.0" prefHeight="25.0" prefWidth="147.0" promptText="Ciudad" text="Barcelona" />
-                              <MenuButton fx:id="semanaMB" disable="true" layoutX="28.0" layoutY="164.0" mnemonicParsing="false" text="Ver tiempo para:">
+                              <TextField fx:id="ciudadTF" layoutX="17.0" layoutY="57.0" prefHeight="25.0" prefWidth="147.0" promptText="Ciudad" text="Nonaspe" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0" />
+                              <TextField fx:id="paisTF" editable="false" layoutX="17.0" layoutY="90.0" prefHeight="25.0" prefWidth="147.0" promptText="Pais" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0" />
+                              <MenuButton fx:id="semanaMB" disable="true" layoutX="29.0" layoutY="191.0" mnemonicParsing="false" text="Ver tiempo para:" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0">
                                 <items>
                                   <CheckMenuItem fx:id="dia_1_CMI" mnemonicParsing="false" onAction="#SiguientesDias" text="1 Dia" />
                                   <CheckMenuItem fx:id="dia_2_CMI" mnemonicParsing="false" onAction="#SiguientesDias" text="2 Dias" />
@@ -46,49 +49,84 @@
                                   <CheckMenuItem fx:id="dia_15_CMI" mnemonicParsing="false" onAction="#SiguientesDias" text="15 Dias" />
                                 </items>
                               </MenuButton>
-                              <TextField fx:id="semanaTF" disable="true" editable="false" layoutX="27.0" layoutY="201.0" onAction="#diaSemana" prefHeight="25.0" prefWidth="124.0" promptText="3 Dias (defecto)" />
-                              <Button fx:id="boton" layoutX="39.0" layoutY="338.0" mnemonicParsing="false" onAction="#verTiempo" text="Button" />
+                              <TextField fx:id="semanaTF" disable="true" editable="false" layoutX="28.0" layoutY="228.0" onAction="#DiaSemana" prefHeight="25.0" prefWidth="124.0" promptText="3 Dias (defecto)" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0" />
+                              <Button fx:id="boton" layoutX="42.0" layoutY="338.0" mnemonicParsing="false" onAction="#VerTiempo" text="Obtener Datos" />
                               <VBox layoutX="35.0" layoutY="290.0" />
-                              <Button fx:id="test" layoutX="61.0" layoutY="386.0" mnemonicParsing="false" onAction="#llamadaApi" text="test" underline="true" />
-                              <RadioButton fx:id="diasRB" layoutX="29.0" layoutY="121.0" mnemonicParsing="false" onAction="#daily" text="Proximos dias" />
-                              <RadioButton fx:id="horasRB" layoutX="28.0" layoutY="104.0" mnemonicParsing="false" onAction="#daily" selected="true" text="Proximas horas" />
-                              <RadioButton fx:id="fechasRB" layoutX="29.0" layoutY="138.0" mnemonicParsing="false" onAction="#daily" prefHeight="17.0" prefWidth="120.0" text="Dias de la semana" />
-                              <MenuButton fx:id="diasSemanaMB" disable="true" layoutX="30.0" layoutY="233.0" mnemonicParsing="false" text="Dias semana:">
+                              <RadioButton fx:id="diasRB" layoutX="30.0" layoutY="148.0" mnemonicParsing="false" onAction="#Daily" text="Proximos dias" AnchorPane.leftAnchor="17.0" />
+                              <RadioButton fx:id="horasRB" layoutX="29.0" layoutY="131.0" mnemonicParsing="false" onAction="#Daily" selected="true" text="Proximas horas" AnchorPane.leftAnchor="17.0" />
+                              <RadioButton fx:id="fechasRB" layoutX="30.0" layoutY="165.0" mnemonicParsing="false" onAction="#Daily" prefHeight="17.0" prefWidth="120.0" text="Dias de la semana" AnchorPane.leftAnchor="17.0" />
+                              <MenuButton fx:id="diasSemanaMB" disable="true" layoutX="31.0" layoutY="259.0" mnemonicParsing="false" text="Dias semana:" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0">
                                  <items>
-                                     <CheckMenuItem fx:id="lunesCMI" mnemonicParsing="false" onAction="#diaSemana" text="Lunes" />
-                                     <CheckMenuItem fx:id="martesCMI" mnemonicParsing="false" onAction="#diaSemana" text="Martes" />
-                                     <CheckMenuItem fx:id="miercolesCMI" mnemonicParsing="false" onAction="#diaSemana" text="Miercoles" />
-                                     <CheckMenuItem fx:id="juevesCMI" mnemonicParsing="false" onAction="#diaSemana" text="Jueves" />
-                                     <CheckMenuItem fx:id="viernesCMI" mnemonicParsing="false" onAction="#diaSemana" text="Viernes" />
-                                     <CheckMenuItem fx:id="sabadoCMI" mnemonicParsing="false" onAction="#diaSemana" text="Sabado" />
-                                     <CheckMenuItem fx:id="domingoCMI" mnemonicParsing="false" onAction="#diaSemana" text="Domingo" />
+                                     <CheckMenuItem fx:id="lunesCMI" mnemonicParsing="false" onAction="#DiaSemana" text="Lunes" />
+                                     <CheckMenuItem fx:id="martesCMI" mnemonicParsing="false" onAction="#DiaSemana" text="Martes" />
+                                     <CheckMenuItem fx:id="miercolesCMI" mnemonicParsing="false" onAction="#DiaSemana" text="Miercoles" />
+                                     <CheckMenuItem fx:id="juevesCMI" mnemonicParsing="false" onAction="#DiaSemana" text="Jueves" />
+                                     <CheckMenuItem fx:id="viernesCMI" mnemonicParsing="false" onAction="#DiaSemana" text="Viernes" />
+                                     <CheckMenuItem fx:id="sabadoCMI" mnemonicParsing="false" onAction="#DiaSemana" text="Sabado" />
+                                     <CheckMenuItem fx:id="domingoCMI" mnemonicParsing="false" onAction="#DiaSemana" text="Domingo" />
                                  </items>
                               </MenuButton>
-                              <TextField fx:id="fechaSemanaTF" disable="true" editable="false" layoutX="29.0" layoutY="265.0" onAction="#diaSemana" prefHeight="25.0" prefWidth="124.0" promptText="Dias de la semana" />
+                              <TextField fx:id="fechaSemanaTF" disable="true" editable="false" layoutX="30.0" layoutY="292.0" onAction="#DiaSemana" prefHeight="25.0" prefWidth="124.0" promptText="Dias de la semana" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0" />
+                              <Button layoutX="63.0" layoutY="382.0" mnemonicParsing="false" onAction="#Exit" text="Salir" />
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="254.0">
                            <children>
                               <ListView fx:id="tiempoLV" layoutX="59.0" layoutY="68.0" prefHeight="451.0" prefWidth="456.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="fotoIV" fitHeight="85.0" fitWidth="94.0" layoutX="317.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="358.0" AnchorPane.leftAnchor="317.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="8.0" />
                            </children>
                         </AnchorPane>
                     </items>
                   </SplitPane>
                </content>
             </Tab>
-          <Tab fx:id="graficaTAB" text="Grafica">
+          <Tab fx:id="graficaTAB" disable="true" text="Grafica">
                <content>
-                  <AreaChart fx:id="graficaAC">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </AreaChart>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="522.0" layoutY="401.0" mnemonicParsing="false" onAction="#Grafica" text="Generar" />
+                        <ListView fx:id="semana1LV" layoutX="26.0" layoutY="22.0" prefHeight="187.0" prefWidth="275.0" />
+                        <ListView fx:id="semana2LV" layoutX="332.0" layoutY="22.0" prefHeight="187.0" prefWidth="275.0" />
+                        <ListView fx:id="semana3LV" layoutX="26.0" layoutY="237.0" prefHeight="187.0" prefWidth="275.0" />
+                        <TextField fx:id="ciudadGrapTF" editable="false" layoutX="309.0" layoutY="388.0" prefHeight="25.0" prefWidth="151.0" promptText="Ciudad" />
+                        <TextField fx:id="paisGrapTF" editable="false" layoutX="309.0" layoutY="419.0" prefHeight="25.0" prefWidth="151.0" promptText="Pais" />
+                        <Label alignment="CENTER" layoutX="26.0" layoutY="6.0" prefHeight="17.0" prefWidth="275.0" text="07 Dias --&gt; 1 Semana" textAlignment="CENTER" />
+                        <Label alignment="CENTER" layoutX="332.0" layoutY="6.0" prefHeight="17.0" prefWidth="275.0" text="14 Dias --&gt; 2 Semana" textAlignment="CENTER" />
+                        <Label alignment="CENTER" layoutX="26.0" layoutY="217.0" prefHeight="17.0" prefWidth="275.0" text="16 Dias --&gt; 3 Semana" textAlignment="CENTER" />
+                        <TextField fx:id="MaxMediaSem1" editable="false" layoutX="376.0" layoutY="262.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField fx:id="MaxMediaSem2" editable="false" layoutX="376.0" layoutY="305.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField fx:id="MaxMediaSem3" editable="false" layoutX="376.0" layoutY="350.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField fx:id="MinMediaSem1" editable="false" layoutX="513.0" layoutY="262.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField fx:id="MinMediaSem2" editable="false" layoutX="513.0" layoutY="305.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField fx:id="MinMediaSem3" editable="false" layoutX="513.0" layoutY="350.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Label alignment="CENTER" layoutX="376.0" layoutY="226.0" prefWidth="100.0" text="Temp. Maxima" />
+                        <Label alignment="CENTER" layoutX="513.0" layoutY="226.0" prefWidth="100.0" text="Temp. Minima" />
+                        <Label layoutX="318.0" layoutY="266.0" text="Sem 1" />
+                        <Label layoutX="318.0" layoutY="309.0" text="Sem 2" />
+                        <Label layoutX="318.0" layoutY="354.0" text="Sem 3" />
+                     </children>
+                  </Pane>
                </content>
             </Tab>
-            <Tab fx:id="informacionTAB" disable="true" text="Informacion" />
+            <Tab fx:id="informacionTAB" onSelectionChanged="#Informacion" text="Informacion">
+               <content>
+                  <SplitPane dividerPositions="0.2838137472283814" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TextArea fx:id="descripcionTA" editable="false" prefHeight="125.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Button fx:id="listaPaises" layoutX="556.0" layoutY="99.0" mnemonicParsing="false" onAction="#EnlaceBoton" text="Codigos Pais" />
+                              <Hyperlink fx:id="link" layoutX="123.0" layoutY="100.0" text="Hyperlink" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TextArea fx:id="notasTA" layoutY="-14.0" prefHeight="320.0" prefWidth="640.0" promptText="Notas" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </content></Tab>
         </tabs>
       </TabPane>
    </children>
